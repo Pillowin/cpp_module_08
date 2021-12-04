@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:55:36 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/03 22:53:41 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:47:54 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,19 @@ Span::~Span(void) {}
 **	Add a single number n in numbers vector.
 */
 void Span::addNumber(int n) {
-	if (this->numbers.size() > this->size)
+	if (this->numbers.size() >= this->size)
 		throw Full();
 	this->numbers.push_back(n);
+}
+
+/*
+**	Add a range of numbers in numbers vector.
+*/
+void Span::addNumbers(std::vector<int>::iterator begin,
+					  std::vector<int>::iterator end) {
+	if (this->numbers.size() + std::distance(begin, end) > this->size)
+		throw Full();
+	this->numbers.insert(this->numbers.end(), begin, end);
 }
 
 /*
@@ -76,12 +86,10 @@ Span& Span::operator=(Span const& rhs) {
 **	Exception: notEnoughNumber
 */
 char const* Span::NotEnoughNumber::what(void) const throw() {
-	return ("Not enough number in span");
+	return ("not enough number in span");
 }
 
 /*
 **	Exception: notEnoughNumber
 */
-char const* Span::Full::what(void) const throw() {
-	return ("Not enough number in span");
-}
+char const* Span::Full::what(void) const throw() { return ("span is full"); }

@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:55:35 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/03 22:47:36 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/04 15:37:45 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <exception>
 #include <iostream>
+#include <iterator>
 #include <vector>
 
 class Span {
@@ -26,6 +27,8 @@ class Span {
 		virtual ~Span(void);
 
 		void addNumber(int n);
+		void addNumbers(std::vector<int>::iterator begin,
+						std::vector<int>::iterator end);
 		unsigned int shortestSpan(void);
 		unsigned int longestSpan(void);
 
