@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:55:36 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/04 15:47:54 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:24:45 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,28 @@ void Span::addNumbers(std::vector<int>::iterator begin,
 /*
 **	Return the shortest span between all the numbers.
 */
-unsigned int Span::shortestSpan(void) {
+unsigned int Span::shortestSpan(void) const {
 	if (this->numbers.size() <= 1)
 		throw NotEnoughNumber();
-	std::vector<int>::iterator it
-		= std::min_element(this->numbers.begin(), this->numbers.end());
-	int min1 = *it;
-	this->numbers.erase(it);
-	int min2 = *std::min_element(this->numbers.begin(), this->numbers.end());
-	this->numbers.insert(it, min1);
-	return (min2 - min1);
+
+	unsigned int span = std::numeric_limits<unsigned int>::max();
+	for (std::vector<int>::const_iterator it = this->numbers.begin();
+		 it != this->numbers.end();
+		 it++) {
+		for (std::vector<int>::const_iterator it2 = this->numbers.begin();
+			 it2 != this->numbers.end();
+			 it2++) {
+			if (it != it2 && std::abs(*it - *it2) < span)
+				span = std::abs(*it - *it2);
+		}
+	}
+	return (span);
 }
 
 /*
 **	Return the longest span between all the numbers.
 */
-unsigned int Span::longestSpan(void) {
+unsigned int Span::longestSpan(void) const {
 	if (this->numbers.size() <= 1)
 		throw NotEnoughNumber();
 	return (*std::max_element(this->numbers.begin(), this->numbers.end())

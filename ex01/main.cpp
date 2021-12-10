@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:54:55 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/04 15:59:34 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:23:34 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ int main(void) {
 	}
 
 	std::cout << std::endl
-			  << "Testing with 10 random values ------------------" << std::endl
+			  << "Testing with 6 random values ------------------" << std::endl
 			  << std::endl;
 
 	srand(time(NULL));
 	std::vector<int> vec;
-	for (unsigned int i = 0; i < 10; i++)
+	for (unsigned int i = 0; i < 6; i++)
 		vec.push_back(rand() % 100 + 1);
 
 	std::cout << vec.at(0);
-	for (unsigned int i = 1; i < 10; i++)
+	for (unsigned int i = 1; i < 6; i++)
 		std::cout << " | " << vec.at(i);
 	std::cout << std::endl;
 
-	Span s(10);
+	Span s(6);
 	try {
 		s.addNumbers(vec.begin(), vec.end());
 		std::cout << "longest span is: " << s.longestSpan() << std::endl;
@@ -86,5 +86,6 @@ int main(void) {
 	} catch (std::exception const& e) {
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
+
 	return (EXIT_SUCCESS);
 }
