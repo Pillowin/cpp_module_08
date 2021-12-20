@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:30:47 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/03 16:27:15 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/20 18:37:17 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <vector>
 
 int main(void) {
-	int myints[] = {1, 2, 3, 4, 5};
+	int myints[5] = {1, 2, 3, 4, 5};
 
 	std::vector<int> vec(myints, myints + sizeof(myints) / sizeof(int));
 	try {
