@@ -6,7 +6,7 @@
 /*   By: agautier <agautier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:55:36 by agautier          #+#    #+#             */
-/*   Updated: 2021/12/10 17:24:45 by agautier         ###   ########.fr       */
+/*   Updated: 2021/12/20 18:54:30 by agautier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ unsigned int Span::shortestSpan(void) const {
 		for (std::vector<int>::const_iterator it2 = this->numbers.begin();
 			 it2 != this->numbers.end();
 			 it2++) {
-			if (it != it2 && std::abs(*it - *it2) < span)
+			if (it != it2
+				&& static_cast<unsigned int>(std::abs(*it - *it2)) < span)
 				span = std::abs(*it - *it2);
 		}
 	}
